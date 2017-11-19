@@ -1,11 +1,23 @@
 group 'io.github.AndiA92'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-docker-plugin:3.2.0'
+    }
+}
 
 repositories {
     mavenCentral()
 }
+
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'com.bmuschko.docker-java-application'
 
 
 sourceCompatibility = 1.8
@@ -20,4 +32,16 @@ dependencies {
     compile 'org.projectlombok:lombok:1.16.18'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+mainClassName = 'io.github.AndiA92.aws.lambda.restapi.dispatcher.MessageDispatcher'
+
+docker {
+    javaApplication {
+        baseImage = 'java:openjdk-8-jre'
+        maintainer = 'Andrea Aczel "aczelandi@gmail.com"'
+        ports = [4567, 4567]
+        tag = 'andia92/aws-lambda-restapi:1.0.0'
+    }
 }
