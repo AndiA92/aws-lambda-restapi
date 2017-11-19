@@ -1,39 +1,23 @@
-
-
-buildscript {
-    repositories {
-        maven { url 'https://repo.spring.io/libs-snapshot' }
-    }
-
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
-    }
-}
-
 group 'io.github.AndiA92'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'war'
 apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
 
 repositories {
     mavenCentral()
-    maven { url 'https://repo.spring.io/libs-snapshot' }
 }
 
 
 sourceCompatibility = 1.8
 
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.8.RELEASE'
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:1.5.8.RELEASE")
 
     compile 'com.sparkjava:spark-core:2.7.0'
     compile 'com.j2html:j2html:1.2.0'
     compile 'org.codeartisans:org.json:20161124'
 
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.13'
     compile 'org.projectlombok:lombok:1.16.18'
-    compile 'log4j:log4j:1.2.14'
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

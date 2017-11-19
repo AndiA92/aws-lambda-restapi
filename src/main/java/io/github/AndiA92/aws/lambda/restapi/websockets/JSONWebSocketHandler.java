@@ -23,7 +23,7 @@ public class JSONWebSocketHandler {
     }
 
     @OnWebSocketMessage
-    public void onMessage(String message) {
+    public void onMessage(Session user, String message) {
         MessageDispatcher.dispatch(message);
     }
 }

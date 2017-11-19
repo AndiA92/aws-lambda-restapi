@@ -6,13 +6,16 @@ import lombok.extern.log4j.Log4j;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
+//
+//import org.apache.log4j.Level;
+//import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.websocket.api.Session;
 import org.json.JSONObject;
 
 import static spark.Spark.*;
 
-@Log4j
+@Slf4j
 public class MessageDispatcher {
 
     private static Map<Session, String> userUsernameMap = new ConcurrentHashMap<>();
@@ -20,10 +23,13 @@ public class MessageDispatcher {
     private static int nextUserNumber;
 
     public static void main(String[] args) {
-        staticFiles.location("/public"); //index.html is served at localhost:4567 (default port)
-        staticFiles.expireTime(600);
-        webSocket("/chat", JSONWebSocketHandler.class);
+        webSocket("/lambda", JSONWebSocketHandler.class);
         init();
+        post("/servers", (req, resp) -> {
+            log.info("Message received from : " + req.ip());
+            dispatch(req.body());
+            return new JSONObject("{status: 'success'}");
+        });
     }
 
     public static void registerUser(Session session, String username) {
@@ -40,10 +46,10 @@ public class MessageDispatcher {
             try {
                 session.getRemote()
                        .sendString(String.valueOf(new JSONObject()
-                               .put("data", message)
+                               .put("userMessage", message)
                        ));
             } catch (Exception e) {
-                log.info("An error occurred: ", e);
+                log.error("An error occurred: ", e);
             }
         });
     }
