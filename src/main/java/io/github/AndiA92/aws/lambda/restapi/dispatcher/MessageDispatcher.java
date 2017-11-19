@@ -45,9 +45,7 @@ public class MessageDispatcher {
         userUsernameMap.keySet().stream().filter(Session::isOpen).forEach(session -> {
             try {
                 session.getRemote()
-                       .sendString(String.valueOf(new JSONObject()
-                               .put("userMessage", message)
-                       ));
+                       .sendString(message);
             } catch (Exception e) {
                 log.error("An error occurred: ", e);
             }
