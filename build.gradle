@@ -35,7 +35,7 @@ dependencies {
 }
 
 
-mainClassName = 'io.github.AndiA92.aws.lambda.restapi.dispatcher.MessageDispatcher'
+mainClassName = 'io.github.AndiA92.aws.lambda.restapi.websockets.WebSocketBroadcaster'
 
 docker {
     javaApplication {
