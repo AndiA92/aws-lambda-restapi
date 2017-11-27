@@ -42,6 +42,6 @@ docker {
         baseImage = 'java:openjdk-8-jre'
         maintainer = 'Andrea Aczel "aczelandi@gmail.com"'
         ports = [4567, 4567]
-        tag = 'andia92/aws-lambda-restapi:1.0.1'
+        tag = 'andia92/aws-lambda-restapi:2.0.0'
     }
 }

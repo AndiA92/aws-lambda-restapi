@@ -1,15 +1,11 @@
 package io.github.AndiA92.aws.lambda.restapi.websockets;
 
 import io.github.AndiA92.aws.lambda.restapi.exceptions.ChannelNotFoundException;
-import io.github.AndiA92.aws.lambda.restapi.websockets.WebSocketHandler;
 
 
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-//
-//import org.apache.log4j.Level;
-//import org.apache.log4j.Logger;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
