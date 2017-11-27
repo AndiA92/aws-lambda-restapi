@@ -1,4 +1,4 @@
-package io.github.AndiA92.aws.lambda.restapi.exceptions;
+package io.github.andia92.restws.exceptions;
 
 public class ChannelNotFoundException extends RuntimeException {
 

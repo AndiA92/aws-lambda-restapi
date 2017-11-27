@@ -1,5 +1,5 @@
-group 'io.github.AndiA92'
-version '1.0-SNAPSHOT'
+group 'io.github.andia92'
+version '2.0.0'
 
 buildscript {
     repositories {
@@ -35,7 +35,7 @@ dependencies {
 }
 
 
-mainClassName = 'io.github.AndiA92.aws.lambda.restapi.websockets.WebSocketBroadcaster'
+mainClassName = 'io.github.andia92.restws.websockets.WebSocketBroadcaster'
 
 docker {
     javaApplication {

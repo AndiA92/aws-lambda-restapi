@@ -1,4 +1,4 @@
-package io.github.AndiA92.aws.lambda.restapi.websockets;
+package io.github.andia92.restws.websockets;
 
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.websocket.api.Session;
