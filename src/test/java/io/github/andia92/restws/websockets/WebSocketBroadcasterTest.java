@@ -28,9 +28,11 @@ public class WebSocketBroadcasterTest {
 
     private static final String CHANNEL = "test1";
 
-    private String destUri = "ws://localhost:4567/" + CHANNEL;
+    private static final String URI = "localhost:4567/";
 
-    private URI echoUri = new URI(destUri);
+    private static final String WS_URI = "ws://" + URI + CHANNEL;
+
+    private URI echoUri = new URI(WS_URI);
 
     private WebSocketBroadcaster webSocketBroadcaster;
 
@@ -56,7 +58,7 @@ public class WebSocketBroadcasterTest {
             webSocket = new WebSocketTestImpl();
             ClientUpgradeRequest request = new ClientUpgradeRequest();
             wsClient.connect(webSocket, echoUri, request);
-            log.info("Connecting to : %s%n", echoUri);
+            log.info("Connecting to: " + echoUri);
         } catch (Throwable t) {
             log.error("Exception occurred:", t.getMessage());
         }
@@ -66,7 +68,7 @@ public class WebSocketBroadcasterTest {
     public void restApiCalled_MessageDispatchedToWS() throws InterruptedException {
         given().body("content")
                .when()
-               .post("http://localhost:4567/broadcast/test1")
+               .post("http://" + URI + "broadcast/" + CHANNEL)
                .then()
                .statusCode(200)
                .body("status", equalTo("success"));

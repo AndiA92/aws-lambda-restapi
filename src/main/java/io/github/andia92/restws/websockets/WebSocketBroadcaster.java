@@ -24,7 +24,7 @@ public class WebSocketBroadcaster {
         broadcaster.run(args);
     }
 
-    protected void run(String[] args) {
+    void run(String[] args) {
         stream(args)
                 .forEach(arg -> {
                     log.info("Create web socket at route: " + arg);
@@ -55,7 +55,7 @@ public class WebSocketBroadcaster {
         awaitInitialization();
     }
 
-    protected void stop() {
+    void stop() {
         Spark.stop();
     }
 }

@@ -33,10 +33,9 @@ public class WebSocketHandler {
 
     @OnWebSocketMessage
     public void onMessage(Session user, String message) {
-        dispatch(message);
     }
 
-    public void dispatch(String message) {
+    void dispatch(String message) {
         userUsernameMap.keySet()
                        .stream()
                        .filter(Session::isOpen)
